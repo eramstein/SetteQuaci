@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Sette Quaci</title>
+    <link rel="stylesheet" href="styles/main.css">
+  </head>
+  <body>
+
+    <div id="lobby-container">
+
+        <div id="lobby-authentication">
+            <div>email: <input id="input-username" type="text"></div>
+            <div>password: <input id="input-password" type="password"></div>   
+            <button onclick="LOB.authenticate()">authenticate</button>   
+        </div>
+
+        <br>
+        <br>
+
+        <div id="lobby-players">
+            <button onclick="LOB.joinLobby()">join lobby</button>
+            <button onclick="LOB.leaveLobby()">leave lobby</button>
+
+            <br>
+            <br>
+            
+            <div>waiting for challenge:</div>
+            <div id="players-list"></div>            
+        </div>       
+
+    </div>
+
+    <div id="game-container">
+        
+        
+
+    </div>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.5.1/lodash.min.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+   
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/config.js"></script>
+    <script src="scripts/firebase.js"></script>
+    
+    <script src="scripts/state/state.js"></script>
+    <script src="scripts/state/mutators.js"></script>
+
+    <script src="scripts/ui/refresh.js"></script>
+    <script src="scripts/ui/board.js"></script>
+    <script src="scripts/ui/picks.js"></script>
+
+    <script src="scripts/engine/game.js"></script>
+    <script src="scripts/engine/picks.js"></script>
+    
+    <script src="scripts/lobby/authentication.js"></script>
+    <script src="scripts/lobby/games.js"></script>
+    
+    
+
+</body>
+</html>

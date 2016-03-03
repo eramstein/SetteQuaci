@@ -1,0 +1,5 @@
+var CONFIG = {
+    'firebaseApp': 'settequaci'
+};
+
+

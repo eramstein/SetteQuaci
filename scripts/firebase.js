@@ -1,0 +1,1 @@
+var FIREBASE = new Firebase('https://' + CONFIG.firebaseApp + '.firebaseio.com');
