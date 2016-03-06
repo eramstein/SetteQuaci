@@ -42,20 +42,22 @@ var LOB = (function (mod) {
         $("#game-container").show();
     };
 
+    mod.addPlayersToGame = function (player1, player2, gameId) {
+        var players = {};
+        players[player1] = gameId;
+        players[player2] = gameId;
+        ingameRef.set(players);
+    }
+
     mod.createGame = function (player1, player2) {
 
-        var initialState = {
-            'players': {
+        var players = {
                 'player1': player1,
                 'player2': player2
-            }
-        };
+        };       
 
-        var createdGame = FIREBASE.child('games').push(initialState).key();
-
-        //add players to the list of ingame players
-        ingameRef.child(player1).set(createdGame);
-        ingameRef.child(player2).set(createdGame);
+        //init state
+        GE.game.init(players);
 
     };
 
@@ -66,7 +68,10 @@ var LOB = (function (mod) {
         lobbyRef.child(LOB.userName).set(null);      
 
         //create new game
-        mod.createGame(playerID, LOB.userName);         
+        mod.createGame(playerID, LOB.userName);
+
+        // GAME STARTS HERE
+        //ingameRef.on('value', ...) will trigger loadGame which will trigger setRemoteStore
         
         mod.displayGame();
               

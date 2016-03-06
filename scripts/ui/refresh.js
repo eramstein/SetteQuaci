@@ -1,8 +1,8 @@
 var UI = (function (mod) {
 
-    mod.refresh = function (newState) {
-        console.log('refresh', newState);
-        if(newState.picks && newState.picks.current) {
+    mod.refresh = function () {
+        console.log('refresh', STATE);
+        if(STATE.picks && STATE.picks.current) {
             UI.picks.update();
         } else {
             UI.board.update();

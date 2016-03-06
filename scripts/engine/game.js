@@ -9,8 +9,8 @@ var GE = (function (mod) {
             'season': 1,
             'creatures': null,
             'picks': {
-                'current': null,
-                'all': null
+                'current': GE.picks.buildPicks(),
+                'all': GE.picks.getInitialPicks()
             },
             'players': {
                 'player1' : {},
@@ -23,11 +23,8 @@ var GE = (function (mod) {
         initialState.players.player1.name = players.player1;
         initialState.players.player2.name = players.player2;
 
-        // TODO: put on server side...
-        if(LOB.userName === players.player1){
-            initialState.picks.current = GE.picks.getPicks();
-            MUTATORS.setRemoteState(initialState);
-        }
+        // init state
+        MUTATORS.setInitialState(initialState);       
 
     };
 
