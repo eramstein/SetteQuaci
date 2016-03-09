@@ -1,0 +1,54 @@
+#picks-container {
+    width: 100%;
+}
+
+#picks {
+    width: 70%;
+    margin: 0 auto;
+}
+
+#picks-future {
+    margin-top: 100px;
+}
+
+.pick {
+    border: 1px solid #cccccc;
+    width: 150px;
+    height: 200px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.pick:hover .card-name, .pick.highlighted {
+    font-weight: bold;
+}
+
+.pick-options .pick, .future-pick-row .pick, .pick-comment {
+    float:left;
+    position: relative;
+}
+
+.pick-comment {
+    width: 250px;
+    text-align: center;
+    font-size: 30px;
+    color: #666;
+    padding-top: 100px;
+}
+
+.pick-options, .future-pick-row {
+    clear: both;
+    height: 240px;
+}
+
+.future-pick-row {
+    opacity: 0.6;
+}
+
+.future-pick-row .pick {
+    cursor: default !important;
+}
+
+.future-pick-row .pick:hover .card-name {
+    font-weight: normal !important;
+}

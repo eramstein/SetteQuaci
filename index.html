@@ -3,6 +3,8 @@
   <head>
     <title>Sette Quaci</title>
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/picks.css">
+    <link rel="stylesheet" href="styles/cards.css">
   </head>
   <body>
 
@@ -32,7 +34,20 @@
 
     <div id="game-container">
         
-        
+        <div id="picks-container">
+            <div id="picks">
+                <div id="picks-opponent" class="pick-options">
+                    <div class="pick-comment">Guess</div>
+                </div>
+                <div id="picks-player" class="pick-options">
+                    <div class="pick-comment">Pick</div>
+                </div>
+                <div id="picks-future">
+                </div>
+            </div>
+        </div>
+
+        <div id="board-container"></div>
 
     </div>
 
@@ -57,6 +72,7 @@
 
     <script src="scripts/engine/game.js"></script>
     <script src="scripts/engine/picks.js"></script>
+    <script src="scripts/engine/player.js"></script>
     
     <script src="scripts/lobby/authentication.js"></script>
     <script src="scripts/lobby/games.js"></script>

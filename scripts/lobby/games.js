@@ -56,7 +56,7 @@ var LOB = (function (mod) {
                 'player2': player2
         };       
 
-        //init state
+        //init state and start it
         GE.game.init(players);
 
     };
@@ -69,9 +69,6 @@ var LOB = (function (mod) {
 
         //create new game
         mod.createGame(playerID, LOB.userName);
-
-        // GAME STARTS HERE
-        //ingameRef.on('value', ...) will trigger loadGame which will trigger setRemoteStore
         
         mod.displayGame();
               

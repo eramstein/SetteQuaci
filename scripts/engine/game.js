@@ -6,6 +6,7 @@ var GE = (function (mod) {
 
         var initialState = {
             'turn': 1,
+            'phase': 'picks',
             'season': 1,
             'creatures': null,
             'picks': {

@@ -6,16 +6,16 @@ var CARDS = [
         'name': 'Peasant',
         'cost': 1,
         'stats': {
-            'hp': 3,
-            'str': 1
+            'hp': 1,
+            'str': 3
         }
     },
     {
         'name': 'Zombie',
         'cost': 1,
         'stats': {
-            'hp': 3,
-            'str': 1
+            'hp': 2,
+            'str': 2
         }
     },
     {
@@ -30,8 +30,8 @@ var CARDS = [
         'name': 'Wolf',
         'cost': 1,
         'stats': {
-            'hp': 3,
-            'str': 1
+            'hp': 2,
+            'str': 2
         }
     },
     {
@@ -39,7 +39,7 @@ var CARDS = [
         'cost': 1,
         'stats': {
             'hp': 3,
-            'str': 1
+            'str': 3
         }
     },
 
@@ -51,15 +51,15 @@ var CARDS = [
         'cost': 2,
         'stats': {
             'hp': 3,
-            'str': 1
+            'str': 8
         }
     },
     {
         'name': 'Rogue',
         'cost': 2,
         'stats': {
-            'hp': 3,
-            'str': 1
+            'hp': 2,
+            'str': 5
         }
     },
     {
@@ -74,16 +74,16 @@ var CARDS = [
         'name': 'Knight',
         'cost': 2,
         'stats': {
-            'hp': 3,
-            'str': 1
+            'hp': 5,
+            'str': 5
         }
     },
     {
         'name': 'Giant Spider',
         'cost': 2,
         'stats': {
-            'hp': 3,
-            'str': 1
+            'hp': 4,
+            'str': 2
         }
     }
 ];

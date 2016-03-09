@@ -1,0 +1,29 @@
+.card-name {
+    position:absolute;
+    top: 3px;
+    text-align: center;
+    width: 100%;
+}
+
+.stats {
+    position:absolute;
+    bottom: 0px;
+    right: 0px;
+}
+
+.stats div {
+    float:right;
+    height: 20px;
+    width: 20px;
+    text-align: center;
+    padding-top: 2px;
+}
+
+.stat-hp {
+    background-color: #E47A55;
+    color: white;
+}
+
+.stat-str {
+    background-color: #CFCDCC;
+}

@@ -29,7 +29,23 @@ var MUTATORS = (function(){
                 }                
             });
         });
-    }
+    };
+
+    var syncBackend = function (childPath, newVal) {
+        if(childPath === 'initial'){
+            stateRemote.child(childPath).set(newVal);
+        } else {
+            stateChangeFeed.push({
+                'path': childPath,
+                'value': newVal
+            });
+        }                
+    };
+
+    var sync = function(childPath, newVal){
+        syncBackend(childPath, newVal);        
+        UI.refresh(STATE);
+    };
 
     mod.setRemoteStore = function (gameID) {
         stateRemote = FIREBASE.child('games/' + gameID);
@@ -51,6 +67,7 @@ var MUTATORS = (function(){
 
             //initial state or load state
             if(remoteState.last) {
+                console.log(remoteState);
                 STATE = remoteState.last;
                 onStateUpdated(); 
             } 
@@ -67,21 +84,7 @@ var MUTATORS = (function(){
         stateChangeWatch.set(true);
     };
 
-    var syncBackend = function (childPath, newVal) {
-        if(childPath === 'initial'){
-            stateRemote.child(childPath).set(newVal);
-        } else {
-            stateChangeFeed.push({
-                'path': childPath,
-                'value': newVal
-            });
-        }                
-    };
-
-    var sync = function(childPath, newVal){
-        syncBackend(childPath, newVal);        
-        UI.refresh(STATE);
-    };
+    
 
 
     /************************************************************************************
@@ -116,14 +119,42 @@ var MUTATORS = (function(){
             'y': y
         };
         STATE.creatures[creatureId].pos = newPos;
-        console.log('moveCreature');
         sync('creatures/' + creatureId + '/pos', newPos);
     };
 
-    mod.setCurrentPicks = function (picks) {
-        STATE.picks.current = picks;
-        console.log('setCurrentPicks');
-        sync('picks/current', picks);
+    mod.setPhase = function (val) {
+        STATE.phase = val;
+        sync('phase', val);
+    };
+
+    mod.setCurrentPicks = function (val) {
+        STATE.picks.current = val;
+        sync('picks/current', val);
+    };
+
+    mod.setAllPicks = function (val) {
+        STATE.picks.all = val;
+        sync('picks/all', val);
+    };
+
+    mod.setPickedCard = function (val) {
+        STATE.players[val.playerNum].pick = val.pick;
+        sync('players/' + val.playerNum + '/pick', val.pick);
+    };
+
+    mod.setGuessedCard = function (val) {
+        STATE.players[val.playerNum].guess = val.pick;
+        sync('players/' + val.playerNum + '/guess', val.pick);
+    };
+
+    mod.addCardToHand = function (val) {
+        var card = {
+            'name': val.cardName,
+            'guessed': val.guessed
+        };
+        var hand = STATE.players[val.playerNum].hand || [];
+        hand.push(card);
+        sync('players/' + val.playerNum + '/hand', hand);
     };
 
     return mod;

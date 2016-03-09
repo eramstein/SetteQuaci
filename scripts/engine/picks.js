@@ -30,7 +30,7 @@ var GE = (function (mod) {
 
     };
 
-    mod.picks.draw = function () {
+    mod.picks.setCurrentPicks = function () {
 
         var pickList = _.clone(STATE.picks.all);
 
@@ -40,6 +40,62 @@ var GE = (function (mod) {
         pickList.shift();
 
         MUTATORS.setAllPicks(pickList);       
+
+    };
+
+
+    mod.picks.pickCard = function (cardName) {
+
+        MUTATORS.setPickedCard({
+            'pick': cardName,
+            'playerNum': GE.player.playerNum()
+        });
+
+        // if guess done, end pick phase
+        if(STATE.players[GE.player.playerNum()].guess &&
+           STATE.players[GE.player.opponentNum()].guess &&
+           STATE.players[GE.player.opponentNum()].pick
+           ) {
+            mod.picks.endPickPhase();
+        }
+
+    };
+
+    mod.picks.guessCard = function (cardName) {
+
+        MUTATORS.setGuessedCard({
+            'pick': cardName,
+            'playerNum': GE.player.playerNum()
+        });
+
+        // if guess done, end pick phase
+        if(STATE.players[GE.player.playerNum()].pick &&
+           STATE.players[GE.player.opponentNum()].guess &&
+           STATE.players[GE.player.opponentNum()].pick
+           ) {
+            mod.picks.endPickPhase();
+        }
+
+    };
+
+    mod.picks.endPickPhase = function () {
+
+        //add card to player's hand
+        MUTATORS.addCardToHand({
+            'cardName': STATE.players[GE.player.playerNum()].pick,
+            'guessed': STATE.players[GE.player.opponentNum()].guess === STATE.players[GE.player.playerNum()].pick,
+            'playerNum': GE.player.playerNum()
+        });
+
+        //add card to opponent's hand
+        MUTATORS.addCardToHand({
+            'cardName': STATE.players[GE.player.opponentNum()].pick,
+            'guessed': STATE.players[GE.player.playerNum()].guess === STATE.players[GE.player.opponentNum()].pick,
+            'playerNum': GE.player.opponentNum()
+        });
+
+        //go to main phase
+        MUTATORS.setPhase('main');
 
     };
 
