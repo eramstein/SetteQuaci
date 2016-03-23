@@ -1,0 +1,41 @@
+text{
+    text-anchor: middle;
+}
+
+.life-counter circle{
+    fill: #DD1616;
+}
+
+.life-counter text {
+    fill: white;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.cell {
+    fill: white;
+    stroke: #dddddd;
+}
+
+.cell:hover {
+    fill: #F2F9FB !important;
+}
+
+#end-turn-button.active, #concede-button{
+    fill: white;
+    stroke: #333;
+}
+
+.button{
+    cursor: pointer;
+}
+
+#end-turn-button:not(.active){
+    fill: #ddd;
+    stroke: #666;
+}
+
+.current-player-badge{
+    fill: red;
+}
+

@@ -11,7 +11,7 @@ var GE = (function (mod) {
         for (var i = 0; i < 4; i++) {
             var card = _.sample(options);
             _.pull(options, card);
-            picks.push(card);
+            picks.push({'name': card.name});
         };       
 
         return picks;
@@ -32,7 +32,7 @@ var GE = (function (mod) {
 
     mod.picks.setCurrentPicks = function () {
 
-        var pickList = _.clone(STATE.picks.all);
+        var pickList = _.cloneDeep(STATE.picks.all);
 
         MUTATORS.setCurrentPicks(pickList[0]);
 
@@ -93,6 +93,9 @@ var GE = (function (mod) {
             'guessed': STATE.players[GE.player.playerNum()].guess === STATE.players[GE.player.opponentNum()].pick,
             'playerNum': GE.player.opponentNum()
         });
+
+        //go to next picks
+        mod.picks.setCurrentPicks();
 
         //go to main phase
         MUTATORS.setPhase('main');

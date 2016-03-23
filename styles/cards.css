@@ -1,8 +1,25 @@
+.card-frame {
+    fill: white;
+    stroke: #333;
+}
+
+.card.selected .card-frame{
+    fill: #E9F5F9 !important;
+}
+
+.card-hiding-frame{
+    fill: #dddddd;
+}
+
 .card-name {
     position:absolute;
     top: 3px;
     text-align: center;
     width: 100%;
+}
+
+.card-name{
+    font-weight: bold;
 }
 
 .stats {
@@ -21,9 +38,30 @@
 
 .stat-hp {
     background-color: #E47A55;
+    fill: #E47A55;
     color: white;
+}
+
+text.stat-hp {
+    fill: white !important;
 }
 
 .stat-str {
     background-color: #CFCDCC;
+    fill: #CFCDCC;
+}
+
+text.stat-str {
+    fill: black !important;
+}
+
+.abilities{
+    position:absolute;
+    top: 0px;
+    left: 0px;
+    padding: 25px 0px 0px 5px;
+}
+
+.ability{
+    text-align: left !important;
 }

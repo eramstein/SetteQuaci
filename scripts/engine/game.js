@@ -2,13 +2,16 @@ var GE = (function (mod) {
 
     mod.game = {};
 
+    mod.game.seasonNames = ['Winter', 'Spring', 'Summer', 'Autumn'];
+
     mod.game.init = function (players) {
 
         var initialState = {
             'turn': 1,
+            'currentPlayer': 'player1',
             'phase': 'picks',
             'season': 1,
-            'creatures': null,
+            'permanents': true,
             'picks': {
                 'current': GE.picks.buildPicks(),
                 'all': GE.picks.getInitialPicks()
@@ -31,6 +34,33 @@ var GE = (function (mod) {
 
     mod.game.load = function (gameId) {
         MUTATORS.setRemoteStore(gameId);
+    };
+
+    mod.game.endTurn = function () {
+        if(STATE.currentPlayer === GE.player.playerNum()){
+
+            LISTENERS.onEndTurn();
+
+            //turn and season change
+            if(GE.player.playerNum() === 'player2'){                
+                var turn = STATE.turn + 1;
+                var season = (STATE.season + 1) % 4;
+                MUTATORS.setTurn(turn);
+                MUTATORS.setSeason(season);    
+                MUTATORS.clearPlayersTemporaryAttrs();                            
+                MUTATORS.setPhase('picks');
+            }
+
+            //clear temporary state
+            MUTATORS.clearPermanentsTemporaryAttrs(GE.player.playerNum());
+
+            MUTATORS.setCurrentPlayer(GE.player.opponentNum());
+
+        }
+    };
+
+    mod.game.end = function () {
+        MUTATORS.endGame();
     };
 
     return mod;

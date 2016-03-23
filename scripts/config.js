@@ -1,5 +1,6 @@
 var CONFIG = {
-    'firebaseApp': 'settequaci'
+    'firebaseApp': 'settequaci2',
+    'animationDuration': 750
 };
 
 

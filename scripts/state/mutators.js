@@ -5,6 +5,7 @@ var MUTATORS = (function(){
     ************************************************************************************/
 
     var mod = {};
+    var _gameId;
 
     var stateRemote; // path to the game
     var stateChangeFeed; // path to the list of changes published to the other player 
@@ -23,11 +24,19 @@ var MUTATORS = (function(){
             var objectToChange = STATE;
             _.forEach(path, function (item, index) {
                 if(index === path.length - 1) {
-                    objectToChange[item] = stateChange.value;                    
+                    if(stateChange.value === 'REMOVE'){
+                        delete objectToChange[item];
+                    } else {
+                        objectToChange[item] = stateChange.value;
+                    }                                        
                 } else {
+                    if(!objectToChange[item] || objectToChange[item] === true){
+                        objectToChange[item] = {};
+                    }
                     objectToChange = objectToChange[item]; 
                 }                
             });
+            UI.refresh(); 
         });
     };
 
@@ -43,11 +52,17 @@ var MUTATORS = (function(){
     };
 
     var sync = function(childPath, newVal){
+        if(newVal !== null){
+            if(newVal === undefined || (newVal.constructor === Array && newVal.length ===0)){
+                newVal = true;
+            }
+        }       
         syncBackend(childPath, newVal);        
         UI.refresh(STATE);
     };
 
     mod.setRemoteStore = function (gameID) {
+        _gameId = gameID;
         stateRemote = FIREBASE.child('games/' + gameID);
         
         stateRemote.on('value', function (snapshot) {            
@@ -56,7 +71,7 @@ var MUTATORS = (function(){
             var onStateUpdated = function () {
                 UI.refresh(); 
 
-                // set wather and feeder
+                // set watcher and feeder
                 if(!stateChangeFeed){
                     setChangeStore(gameID);
                 }                               
@@ -67,14 +82,13 @@ var MUTATORS = (function(){
 
             //initial state or load state
             if(remoteState.last) {
-                console.log(remoteState);
                 STATE = remoteState.last;
                 onStateUpdated(); 
             } 
             else if(remoteState.initial) {
                 STATE = remoteState.initial;
                 onStateUpdated();                                
-            }                  
+            }                 
         });
 
     };
@@ -113,18 +127,86 @@ var MUTATORS = (function(){
         sync('initial', state);
     };
 
-    mod.moveCreature = function (creatureId, x, y) {
-        var newPos = {
-            'x': x,
-            'y': y
-        };
-        STATE.creatures[creatureId].pos = newPos;
-        sync('creatures/' + creatureId + '/pos', newPos);
+    mod.endGame = function () {
+        FIREBASE.child('games/' + _gameId).set(null);
+        FIREBASE.child('ingame/' + STATE.players.player1.name).set(null);
+        FIREBASE.child('ingame/' + STATE.players.player2.name).set(null);
+    };
+
+    mod.clearPermanentsTemporaryAttrs = function (playerNum) {
+        _.each(STATE.permanents, function (p) {
+            if(p.owner === playerNum){
+                p.hasMoved = false;
+                p.hasAttacked = false;
+            }
+        });
+        //not synced, this is local to the player
+    };
+
+    mod.clearPlayersTemporaryAttrs = function () {
+        STATE.players.player1.pick = null;
+        STATE.players.player2.pick = null;
+        STATE.players.player1.guess = null;
+        STATE.players.player2.guess = null;
+        sync('players', STATE.players);
+    };
+
+    mod.addPermanent = function (card) { 
+        
+        if(!STATE.permanents || STATE.permanents === true){
+            STATE.permanents = {};
+        }
+        STATE.permanents[card.id] = card;
+        sync('permanents/' + card.id, card);
+    };
+
+    mod.updatePermanent = function (card) { 
+        STATE.permanents[card.id] = card;
+        sync('permanents/' + card.id, card);
+    };
+
+    mod.setPermanentProperty = function (cardId, propertyName, value, nosync) { 
+        STATE.permanents[cardId][propertyName] = value;
+        if(!nosync){
+            sync('permanents/' + cardId + '/' + propertyName, value);
+        }        
+    };
+
+    mod.setPlayerProperty = function (player, propertyName, value) { 
+        STATE.players[player][propertyName] = value;
+        sync('players/' + player + '/' + propertyName, value);        
+    };
+
+    mod.deletePermanent = function (cardId) { 
+        delete STATE.permanents[cardId];
+        sync('permanents/' + cardId, 'REMOVE');
+    };
+
+    mod.movePermanent = function (cardId, x, y) { 
+        STATE.permanents[cardId].x = x;
+        STATE.permanents[cardId].y = y;
+        STATE.permanents[cardId].hasMoved = true;
+        sync('permanents/' + cardId, STATE.permanents[cardId]);        
     };
 
     mod.setPhase = function (val) {
         STATE.phase = val;
         sync('phase', val);
+    };
+
+    mod.setTurn = function (val) {
+        STATE.turn = val;
+        sync('turn', val);
+    };
+
+    mod.setSeason = function (val) {
+        STATE.season = val;
+        sync('season', val);
+    };
+
+    mod.setCurrentPlayer = function (val) {
+        STATE.currentPlayer = val;
+        sync('currentPlayer', val);
     };
 
     mod.setCurrentPicks = function (val) {
@@ -152,9 +234,23 @@ var MUTATORS = (function(){
             'name': val.cardName,
             'guessed': val.guessed
         };
-        var hand = STATE.players[val.playerNum].hand || [];
-        hand.push(card);
-        sync('players/' + val.playerNum + '/hand', hand);
+        card.owner = val.playerNum;
+        card.id = val.playerNum + '_' + STATE.turn + '_' + val.cardName;
+
+        if(!STATE.players[val.playerNum].hand || STATE.players[val.playerNum].hand.constructor !== Array){
+            STATE.players[val.playerNum].hand = [card];
+        } else {
+            STATE.players[val.playerNum].hand.push(card);
+        }
+        sync('players/' + val.playerNum + '/hand', STATE.players[val.playerNum].hand);
+    };
+
+    mod.removeCardFromHand = function (player, cardId) {
+        var hand = STATE.players[player].hand;
+        _.remove(hand, {
+            'id': cardId
+        });
+        sync('players/' + player + '/hand', hand);
     };
 
     return mod;

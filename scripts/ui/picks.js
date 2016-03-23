@@ -3,45 +3,57 @@ var UI = (function (mod) {
     mod.picks = {};
 
     mod.picks.update = function () {
-        var picks = STATE.picks.current;
-        var allPicks = STATE.picks.all;
+        var picks = _.cloneDeep(STATE.picks.current);
+        var allPicks = _.cloneDeep(STATE.picks.all);
+
+        picks = _.map(picks, function (p) {
+          return GE.card.getTemplate(p.name);
+        });
+
+        allPicks = _.map(allPicks, function (p1) {
+          return _.map(p1, function (p2) {
+            return GE.card.getTemplate(p2.name);
+          });
+        });
 
         // CURRENT PICKS
         // --------------------------------------
 
-        var playerPicks = d3.select('#picks-player').selectAll('.pick')
-            .data(picks, function(d) {return d.name; })
+        $('.current-pick').remove();
+
+        var currentPicks = d3.select('#picks-player').selectAll('.pick')
+            .data(picks, function(d) {return d.name + STATE.turn; });
+
+        var currentOppPicks = d3.select('#picks-opponent').selectAll('.pick')
+            .data(picks, function(d) {return d.name + STATE.turn; });
+
+        currentPicks
               .enter()
             .append('div')
               .classed('pick', true)
+              .classed('current-pick', true)
               .on('click', function (d) {
                   GE.picks.pickCard(d.name);
               });
 
-        playerPicks.classed('highlighted', function (d) {
+        currentPicks
+        .classed('highlighted', function (d) {
             return STATE.players[GE.player.playerNum()].pick === d.name;
         });
 
-        playerPicks.data(picks, function(d) {return d.name; })
-          .exit()
-          .remove();
-
-        var opponentPicks = d3.select('#picks-opponent').selectAll('.pick')
-            .data(picks, function(d) {return d.name; })
+        currentOppPicks
               .enter()
             .append('div')
-              .classed('pick', true)              
+              .classed('pick', true)    
+              .classed('current-pick', true)          
               .on('click', function (d) {
                   GE.picks.guessCard(d.name);
               });
 
-        opponentPicks.classed('highlighted', function (d) {
-            return STATE.players[GE.player.opponentNum()].guess === d.name;
-        });       
-
-        opponentPicks.data(picks, function(d) {return d.name; })
-          .exit()
-          .remove();
+        currentOppPicks
+        .classed('highlighted', function (d) {
+            return STATE.players[GE.player.playerNum()].guess === d.name;
+        }); 
 
 
         // FUTURE PICKS
@@ -73,22 +85,51 @@ var UI = (function (mod) {
         // ADD CARD FEATURES
         // --------------------------------------
 
-        var allPicks = d3.selectAll('.pick');
+        var allPicksSelection = d3.selectAll('.pick');
 
-        allPicks.append('div')
-          .attr('class','card-name')
+        allPicksSelection.append('div')
+          .classed('card-name', true)
           .text(function (d) {return d.name});
 
-        var stats = allPicks.append('div')
+        var stats = allPicksSelection.append('div')
           .attr('class','stats');        
 
         stats.append('div')
           .attr('class','stat stat-hp')
-          .text(function (d) {return d.stats.hp});
+          .style('display', function (d) {
+            return d.stats ? 'block' : 'none';           
+          })
+          .text(function (d) {
+            if(d.stats){
+              return d.stats.hp
+            }            
+          });
 
         stats.append('div')
           .attr('class','stat stat-str')
-          .text(function (d) {return d.stats.str});
+          .style('display', function (d) {
+            return d.stats ? 'block' : 'none';           
+          })
+          .text(function (d) {
+            if(d.stats){
+              return d.stats.str
+            }
+          });
+
+        var abilitiesBlock = allPicksSelection
+            .append('div')
+            .attr('class','abilities');        
+
+        var abilities = abilitiesBlock.selectAll('.ability')
+            .data(function (d, i) {
+                return d.abilities || [];
+            })
+              .enter()
+            .append('div')
+              .classed('ability', true)
+              .text(function (d) {
+                return d.trigger + ' ' + d.condition + ' ' + d.effect;
+              });
        
 
     };

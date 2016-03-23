@@ -20,7 +20,7 @@
 }
 
 .pick:hover .card-name, .pick.highlighted {
-    font-weight: bold;
+    color: #8E0202;
 }
 
 .pick-options .pick, .future-pick-row .pick, .pick-comment {
@@ -52,3 +52,5 @@
 .future-pick-row .pick:hover .card-name {
     font-weight: normal !important;
 }
+
+

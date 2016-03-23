@@ -4,12 +4,40 @@
 		"selected_items":
 		[
 			[
-				"padding-",
-				"padding-right"
+				"_c",
+				"_gCurrentPlayer"
+			],
+			[
+				"_ce",
+				"_cellWidth"
 			],
 			[
 				"font",
 				"font-weight"
+			],
+			[
+				"cell",
+				"_cellHeight"
+			],
+			[
+				"margin",
+				"margin-top"
+			],
+			[
+				"bor",
+				"border-width"
+			],
+			[
+				"cur",
+				"cursor"
+			],
+			[
+				"pa",
+				"padding-top"
+			],
+			[
+				"padding-",
+				"padding-right"
 			],
 			[
 				"padd",
@@ -68,19 +96,45 @@
 	"buffers":
 	[
 		{
-			"file": "scripts/ui/refresh.js",
+			"file": "scripts/ui/board.js",
 			"settings":
 			{
-				"buffer_size": 283,
+				"buffer_size": 10821,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "scripts/state/mutators.js",
+			"file": "scripts/ui/card.js",
 			"settings":
 			{
-				"buffer_size": 4218,
+				"buffer_size": 3327,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "scripts/engine/creature.js",
+			"settings":
+			{
+				"buffer_size": 759,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "scripts/ui/ui-state.js",
+			"settings":
+			{
+				"buffer_size": 2753,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "Searching 23 files for \"defuse\" (case sensitive)\n\nC:\\Users\\Etienne\\Desktop\\SetteQuaci\\scripts\\engine\\permanent.js:\n   21              MUTATORS.movePermanent(card.id, x, y);\n   22              LISTENERS.onPermanentMoved(STATE.permanents[card.id], x, y);\n   23:             GE.trap.defuseCell(x, y, card);\n   24          }\n   25      };\n\nC:\\Users\\Etienne\\Desktop\\SetteQuaci\\scripts\\engine\\trap.js:\n    3      mod.trap = {};\n    4  \n    5:     mod.trap.defuseCell = function (x, y, creature) {\n    6          var trap = GE.permanent.getPermanents({'x': x, 'y': y, 'owner': GE.player.opponentNum()});\n    7          if(trap.length === 0){return;}\n\nC:\\Users\\Etienne\\Desktop\\SetteQuaci\\scripts\\ui\\ui-state.js:\n   31          }\n   32  \n   33:         //case it's an ennemy trap and there is a currently selected friendly creature -> move and defuse it\n   34          if(mod.state.selectedCard && \n   35             mod.state.selectedCard.owner === GE.player.playerNum() &&\n\n3 matches across 3 files\n",
+			"settings":
+			{
+				"buffer_size": 992,
+				"line_ending": "Windows",
+				"name": "Find Results",
+				"scratch": true
 			}
 		}
 	],
@@ -156,19 +210,46 @@
 	},
 	"file_history":
 	[
-		"/C/Users/Etienne/Desktop/SetteQuaci/index.html",
-		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/data.js",
-		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/engine/picks.js",
-		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/engine/game.js",
-		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/lobby/games.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/engine/permanent.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/ui/card.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/ui/board.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/cards.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/styles/cards.css",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/engine/card.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/engine/trap.js",
 		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/state/mutators.js",
-		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/ui/refresh.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/state/listeners.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/ui/ui-state.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/index.html",
 		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/ui/picks.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/engine/combat.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/engine/game.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/engine/player.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/abilities.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/styles/picks.css",
+		"/C/Users/Etienne/Desktop/SetteQuaci/styles/board.css",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/config.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/engine/creature.js",
 		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/main.js",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/data.js",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/engine/blueprints.js",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/blueprints.js",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/engine/robot.proto.message.js",
 		"/C/Users/Etienne/Desktop/TheGame/app/scripts/engine/game.js",
-		"/C/Users/Etienne/Desktop/TheGame/app/scripts/gameState.js",
-		"/C/Users/Etienne/Desktop/TheGame/app/scripts/utilities.js",
 		"/C/Users/Etienne/Desktop/TheGame/app/scripts/main.js",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/utilities.js",
+		"/C/Users/Etienne/Desktop/TheGame/randomcollector.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/lobby/games.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/engine/picks.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/styles/main.css",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/ui/cards.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/data.js",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/board.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/lobby/authentication.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/ui/refresh.js",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/robots.js",
+		"/C/Users/Etienne/Desktop/TheGame/app/styles/main.css",
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/gameState.js",
 		"/C/Users/Etienne/Desktop/DOC2/index.html",
 		"/C/Users/Etienne/Desktop/DOC2/scripts/state/mutators.js",
 		"/C/Users/Etienne/Desktop/DOC2/scripts/engine/picks.js",
@@ -183,14 +264,11 @@
 		"/C/Users/Etienne/Desktop/DOC2/scripts/config.js",
 		"/C/Users/Etienne/Desktop/DOC2/scripts/state/state.js",
 		"/C/Users/Etienne/Desktop/DOC2/scripts/auth/authentication.js",
-		"/C/Users/Etienne/Desktop/TheGame/app/scripts/engine/blueprints.js",
 		"/C/Users/Etienne/Desktop/TheGame/app/index.html",
 		"/C/Users/Etienne/Desktop/DOC2/src/ui/components/board.jsx",
 		"/C/Users/Etienne/Desktop/DOC2/lib/babel.js",
 		"/C/Users/Etienne/Desktop/dist/firebase.json",
-		"/C/Users/Etienne/Desktop/TheGame/app/styles/main.css",
 		"/C/Users/Etienne/Desktop/TheGame/app/templates/game-info.html",
-		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/blueprints.js",
 		"/C/Users/Etienne/Desktop/TheGame/dist/index.html",
 		"/C/Users/Etienne/Desktop/TheGame/bower.json",
 		"/C/Users/Etienne/Desktop/TheGame/package.json",
@@ -200,15 +278,12 @@
 		"/C/Users/Etienne/Desktop/TheGame/dist/styles/9c307a9d.vendor.css",
 		"/C/Users/Etienne/Desktop/TheGame/bower_components/ace-builds/src-noconflict/snippets/javascript.js",
 		"/C/Users/Etienne/Desktop/TheGame/bower_components/ace-builds/src-noconflict/ext-language_tools.js",
-		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/robots.js",
-		"/C/Users/Etienne/Desktop/TheGame/app/scripts/data.js",
 		"/C/Users/Etienne/Desktop/TheGame/app/templates/blueprint-form.html",
 		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/resources.js",
 		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/buildings.js",
 		"/C/Users/Etienne/Desktop/TheGame/app/scripts/engine/resources.js",
 		"/C/Users/Etienne/Desktop/TheGame/app/scripts/engine/robots.js",
 		"/C/Users/Etienne/Desktop/TheGame/app/scripts/engine/robot.proto.move.js",
-		"/C/Users/Etienne/Desktop/TheGame/app/scripts/engine/robot.proto.message.js",
 		"/C/Users/Etienne/Desktop/TheGame/app/scripts/engine/robot.proto.js",
 		"/C/Users/Etienne/Desktop/TheGame/app/scripts/global.js",
 		"/C/Users/Etienne/Desktop/TheGame/app/templates/blueprints-list.html",
@@ -219,7 +294,6 @@
 		"/C/Users/Etienne/Desktop/WebGL/utils.js",
 		"/C/Users/Etienne/Desktop/app/index.html",
 		"/C/Users/Etienne/Desktop/TheGame/Gruntfile.js",
-		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/board.js",
 		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/info.js",
 		"/C/Users/Etienne/Desktop/TheGame/app/scripts/engine/robot.proto.info.js",
 		"/C/Users/Etienne/Desktop/TheGame/app/scripts/engine/board.js",
@@ -263,27 +337,7 @@
 		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/unit.js",
 		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/ui.js",
 		"/C/Users/Etienne/Desktop/TheGame/.jshintrc",
-		"/C/Users/Etienne/Desktop/TheGame/app/scripts/submodule.js",
-		"/C/Users/Etienne/Desktop/TheGame/app/scripts/module.js",
-		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/moveUnit.js",
-		"/C/Users/Etienne/Desktop/TheGame/app/test.html",
-		"/C/Users/Etienne/Desktop/TheGame/app/test1.js",
-		"/C/Users/Etienne/Desktop/TheGame/app/scripts/main - Copie.js",
-		"/C/Users/Etienne/Desktop/TheGame/bower_components/es6-module-loader/dist/es6-module-loader.js",
-		"/C/Users/Etienne/Desktop/TheGame/.bowerrc",
-		"/C/Users/Etienne/Desktop/TheGame/test/spec/test.js",
-		"/C/Users/Etienne/Desktop/TheGame/test/index.html",
-		"/C/Users/Etienne/Desktop/React/comments.json",
-		"/C/Users/Etienne/Desktop/React/index.html",
-		"/C/Users/Etienne/Desktop/React/react-0.12.1/build/react-with-addons.js",
-		"/C/Users/Etienne/Desktop/Pathways/pathways.html",
-		"/C/Users/Etienne/Desktop/Pathways/d3.min.js",
-		"/C/Users/Etienne/Desktop/Pathways/d3.layout.js",
-		"/C/Users/Etienne/Desktop/Pathways/d3.geom.min.js",
-		"/C/Users/Etienne/Desktop/SQ Firebase/app/js/engine/abilityprototype.js",
-		"/C/Users/Etienne/Desktop/FDA/app/scripts/directives/chartBarpie.js",
-		"/C/Users/Etienne/Desktop/FDA/app/scripts/directives/chartLines.js",
-		"/C/Users/Etienne/Desktop/FDA/app/views/tpllist.html"
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/submodule.js"
 	],
 	"find":
 	{
@@ -291,7 +345,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 96.0,
 		"where_history":
 		[
 			"C:\\Users\\Etienne\\Desktop\\SetteQuaci\\scripts",
@@ -310,6 +364,89 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"defuse",
+			"template",
+			"selection",
+			"d3.selectAll('.card.creature')",
+			"card",
+			"_cellPadding",
+			"selection",
+			"template",
+			".template",
+			"template",
+			"block",
+			"pick",
+			"template",
+			"end-turn",
+			"_gEndTurn",
+			"games",
+			"attacker",
+			"damage",
+			"LISTENERS",
+			"attacker",
+			"card.id",
+			"move(",
+			"hasMoved",
+			"pick",
+			"clearPermanentsTemporaryAttrs",
+			"hand",
+			"player",
+			"setPhase",
+			"data",
+			"permanent",
+			"creature",
+			"_gTurnInfo",
+			"_boardLeft",
+			"phase",
+			"getCardTemplate",
+			"addCardTemplate",
+			"permanent",
+			"card",
+			"addCardTemplate",
+			"template",
+			"stats",
+			"x",
+			"playerCardsInHand",
+			"card",
+			"_gPlayerHand",
+			"playerHand",
+			"card",
+			"saveGame",
+			"cost",
+			"currentPlayer",
+			"displayGame",
+			"board.init",
+			"newState",
+			"addCardTemplate",
+			"playerPicks",
+			"Player",
+			"player",
+			"10",
+			"hp",
+			"function () { return cardWidth - 30; }",
+			"_gPlayerHand",
+			"Life",
+			"4",
+			"turn-count",
+			"_boardWidth",
+			"x",
+			"_cardHeight",
+			"_cardWidth",
+			"Left",
+			"Player",
+			"Life",
+			"player-life",
+			"Board",
+			"Width",
+			"_container",
+			"opponent",
+			"players",
+			"stateChangeWatch",
+			"val",
+			"setCurrentPicks",
+			"Current",
+			"playerPicks",
+			"draw",
 			"newState",
 			"stateChangeFeed",
 			"setRemoteStore",
@@ -354,90 +491,7 @@
 			"sync",
 			"firebaseRef",
 			"FIREBASE",
-			"\"",
-			"localStorage",
-			"KEYS",
-			"localStorage",
-			"STATE_REMOTE",
-			"\"",
-			"AUTH",
-			"GE",
-			"NG",
-			"UI",
-			"\"",
-			"my",
-			"MODULE",
-			"build",
-			"getCapacityLeft",
-			"me.",
-			"-label",
-			"button",
-			"1000000",
-			"populateList",
-			"localStorage",
-			"ID_REGEX",
-			"stops moving",
-			"\"",
-			"this",
-			"computationTime",
-			"blueprint-name-label",
-			"id=\"blueprint-name-label\"",
-			"DATA",
-			"\"",
-			"'",
-			"color",
-			"moveToFront",
-			"id",
-			"buildFromBlueprint",
-			"_localStorageKey",
-			"quit",
-			"scripts",
-			"Duration",
-			"turnDuration",
-			"4000",
-			"1000",
-			"0",
-			"iron",
-			"robotStats",
-			"state",
-			"2",
-			"canvas.",
-			"varying",
-			"setRectangle",
-			"4",
-			".btn",
-			"12",
-			"+=",
-			"stats",
-			"GS.player.resources",
-			"iron",
-			"copper",
-			".resource-count",
-			"resource-info",
-			"<input",
-			"resource-count",
-			"currentBlueprintId",
-			"arr",
-			"create",
-			"guid",
-			"val(",
-			"stats",
-			"UI.init",
-			"iron",
-			"\"",
-			".",
-			"div",
-			"5",
-			"100",
-			"div",
-			"class",
-			"speed",
-			"blueprint-form",
-			"blueprint",
-			"robot",
-			"resources-info",
-			"build",
-			"game-info"
+			"\""
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -445,6 +499,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"getTemplate",
+			"setCurrentPicks",
 			"init",
 			"buildPicks",
 			"joinLobby",
@@ -487,48 +543,23 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "scripts/ui/refresh.js",
+					"file": "scripts/ui/board.js",
 					"settings":
 					{
-						"buffer_size": 283,
+						"buffer_size": 10821,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								252,
-								252
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "scripts/state/mutators.js",
-					"settings":
-					{
-						"buffer_size": 4218,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1712,
-								1712
+								653,
+								653
 							]
 						],
 						"settings":
@@ -538,7 +569,143 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 120.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "scripts/ui/card.js",
+					"settings":
+					{
+						"buffer_size": 3327,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1626,
+								1626
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 457.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "scripts/engine/creature.js",
+					"settings":
+					{
+						"buffer_size": 759,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								634,
+								634
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "scripts/ui/ui-state.js",
+					"settings":
+					{
+						"buffer_size": 2753,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1364,
+								1364
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 300.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"settings":
+					{
+						"buffer_size": 992,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										280,
+										286
+									],
+									[
+										450,
+										456
+									],
+									[
+										835,
+										841
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"output_tag": 1,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
