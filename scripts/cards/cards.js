@@ -7,9 +7,11 @@ var CARDS = [
         'type': 'creature',
         'cost': 1,
         'stats': {
-            'hp': 1,
-            'str': 3
-        }
+            'hp': 3,
+            'str': 1
+        },
+        'abilities': [AB.armor(1)],
+        'text': 'Armor 1'  
     },
     {
         'name': 'Zombie',
@@ -27,7 +29,11 @@ var CARDS = [
         'stats': {
             'hp': 3,
             'str': 1
-        }
+        },
+        'keywords': {
+            'piercing': true
+        },
+        'text': 'Piercing'  
     },
     {
         'name': 'Wolf',
@@ -51,18 +57,18 @@ var CARDS = [
     /******** 1 CC spells *********/
 
     {
-        'name': 'Winter Bomb',
+        'name': 'Bomb',
         'type': 'trap',
         'cost': 1,
         'abilities': [{
             'trigger': 'EndTurn',
-            'condition': 'IF.seasonIs(4) && IF.opponentTurn()',
-            effect: function () {
-                console.log('BOOM');
+            'condition': 'IF.opponentTurn()',
+            effect: function (params) {
                 DO.damageAdjacent(3);
                 DO.selfDestruct();
             }
-        }]              
+        }],
+        'text': 'EOOT, deal 3 damage to adjacent creatures'                
     },
 
     /******** 2 CC creatures *********/
@@ -73,18 +79,20 @@ var CARDS = [
         'type': 'creature',
         'cost': 2,
         'stats': {
-            'hp': 3,
-            'str': 8
+            'hp': 8,
+            'str': 3
         }
     },
     {
-        'name': 'Rogue',
+        'name': 'Knight',
         'type': 'creature',
         'cost': 2,
         'stats': {
-            'hp': 2,
-            'str': 5
-        }
+            'hp': 5,
+            'str': 2
+        },
+        'abilities': [AB.armor(2)],
+        'text': 'Armor 2'  
     },
     {
         'name': 'Vampire',
@@ -96,28 +104,28 @@ var CARDS = [
         }
     },
     {
-        'name': 'Knight',
+        'name': 'Barbarian',
         'type': 'creature',
         'cost': 2,
         'stats': {
             'hp': 5,
-            'str': 5
+            'str': 4
         },
         'abilities': [{
             'trigger': 'EndTurn',
-            'condition': 'IF.seasonIs(4) && IF.turnIs(1)',
-            effect: function () {
-                console.log('BOOM');
-                DO.damageAdjacent(3);
+            'condition': 'true',
+            effect: function (params) {
+                DO.damageAdjacent(1);
             }
-        }]        
+        }],
+        'text': 'EOT, deal 1 damage to adjacent creatures'        
     },
     {
         'name': 'Giant Spider',
         'type': 'creature',
         'cost': 2,
         'stats': {
-            'hp': 4,
+            'hp': 9,
             'str': 2
         }
     }

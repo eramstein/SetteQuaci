@@ -6,7 +6,9 @@ var GE = (function (mod) {
         var damageCurrent = creature.damage || 0;
 
         MUTATORS.setPermanentProperty(creature.id, 'damage', (damageCurrent + damageDealt));
-        LISTENERS.onDealDamage(creature, damageDealt);
+        LISTENERS.on('DealDamage', {
+            'creature': creature, 'damageDealt': damageDealt
+        });
 
         if(STATE.permanents[creature.id].damage >= GE.creature.getHp(creature)){
             GE.permanent.deletePermanent(creature);            

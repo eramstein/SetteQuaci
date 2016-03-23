@@ -39,7 +39,7 @@ var GE = (function (mod) {
     mod.game.endTurn = function () {
         if(STATE.currentPlayer === GE.player.playerNum()){
 
-            LISTENERS.onEndTurn();
+            LISTENERS.on('EndTurn', null);
 
             //turn and season change
             if(GE.player.playerNum() === 'player2'){                

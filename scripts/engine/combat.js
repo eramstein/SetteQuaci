@@ -2,13 +2,20 @@ var GE = (function (mod) {
 
     mod.combat = {};
 
-    var tempData = {};
+    mod.combat.tempData = {};
 
-    var dealDamage = function (attacker, defender) {
-        var creaturecombat = defender !== 'player1' && defender !== 'player2';
+    var dealDamage = function (attacker, defender) {       
+
+        LISTENERS.on('BeforeDealCombatDamage', {
+            'attacker': attacker, 'defender': defender, 'damageDealt': damageDealt
+        });
+
+        var creaturecombat = defender !== 'player1' && defender !== 'player2';       
         var damageDealt = GE.creature.getStrength(attacker);
 
-        LISTENERS.beforeDealCombatDamage(attacker, defender, damageDealt);
+        if(mod.combat.tempData.damageAbsorbed){
+            damageDealt = damageDealt - mod.combat.tempData.damageAbsorbed;
+        }
 
         if(creaturecombat){ 
             GE.creature.receiveDamage(defender, damageDealt);          
@@ -57,11 +64,13 @@ var GE = (function (mod) {
             defender = GE.permanent.getPermanents({'id': defender})[0]; 
         }
         console.log('BASTON', attacker, defender);
-        //tempData = {};
+        mod.combat.tempData = {'attacker': attacker, 'defender': defender};
         console.log(attacker.hasAttacked);
 
-        if(isAttackValid(attacker, defender)){            
-            LISTENERS.onDeclareAttack(attacker, defender);
+        if(isAttackValid(attacker, defender)){    
+            LISTENERS.on('DeclareAttack', {
+                'attacker': attacker, 'defender': defender
+            });
             mod.combat.resolveAttack(attacker, defender);
         }     
     };

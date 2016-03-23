@@ -267,7 +267,10 @@ var UI = (function (mod) {
             .classed('card', true)
             .classed('creature', function (d) {
                 return GE.card.getTemplate(d.name).type === 'creature';
-            });            
+            })
+            .attr('transform', function (d) {
+                return ('translate(-' + (_cellWidth*1.5) + ',' + (_cellHeight*0.5) + ')');
+            });          
 
         var permanentUpdate = permanentSelection
             .transition().duration(CONFIG.animationDuration)

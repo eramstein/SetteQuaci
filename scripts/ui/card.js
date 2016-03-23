@@ -31,14 +31,16 @@ var UI = (function (mod) {
         var abilities = abilitiesBlock.selectAll('.ability')
             .data(function (d, i) {
                 var template = GE.card.getTemplate(d.name);
-                return template.abilities || [];
+                var text = template.text ? template.text.split('|') : null;
+                return text || template.abilities || [];
             })
               .enter()
             .append('xhtml:div')
             .append('div')
               .classed('ability', true)
               .text(function (d) {
-                return d.trigger + ' ' + d.condition + ' ' + d.effect;
+                var text = d.trigger ? d.trigger + ' ' + d.condition + ' ' + d.effect : d;
+                return text;
               });
 
         var stats = selection.append('g')

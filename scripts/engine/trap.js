@@ -8,7 +8,7 @@ var GE = (function (mod) {
         trap = trap[0];
 
         GE.permanent.deletePermanent(trap);
-        LISTENERS.onDefuseTrap(trap, creature);
+        LISTENERS.on('DefuseTrap', {'trap': trap, 'creature': creature});
     };
 
     return mod;

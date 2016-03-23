@@ -4,7 +4,7 @@ var GE = (function (mod) {
 
     mod.permanent.deletePermanent = function (permanent) {
         MUTATORS.deletePermanent(permanent.id);
-        LISTENERS.onCreatureDestroyed(permanent);
+        LISTENERS.on('PermanentDestroyed', {'permanent': permanent});
     };
 
     mod.permanent.getPermanents = function (filterObject) {
@@ -37,7 +37,9 @@ var GE = (function (mod) {
            card.turnPlayedOn !== STATE.turn &&
            (GE.player.playerNum() === 'player1' && x <= 2 || GE.player.playerNum() === 'player2' && x > 2)){            
             MUTATORS.movePermanent(card.id, x, y);
-            LISTENERS.onPermanentMoved(STATE.permanents[card.id], x, y);
+            LISTENERS.on('PermanentMoved', {
+                'permanent': STATE.permanents[card.id], 'x': x, 'y': y
+            });
             GE.trap.defuseCell(x, y, card);
         }
     };

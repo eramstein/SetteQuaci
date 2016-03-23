@@ -122,13 +122,15 @@ var UI = (function (mod) {
 
         var abilities = abilitiesBlock.selectAll('.ability')
             .data(function (d, i) {
-                return d.abilities || [];
+                var text = d.text ? d.text.split('|') : null;
+                return text || d.abilities || [];
             })
               .enter()
             .append('div')
               .classed('ability', true)
               .text(function (d) {
-                return d.trigger + ' ' + d.condition + ' ' + d.effect;
+                var text = d.trigger ? d.trigger + ' ' + d.condition + ' ' + d.effect : d;
+                return text;
               });
        
 
