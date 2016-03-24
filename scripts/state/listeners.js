@@ -7,8 +7,8 @@ var LISTENERS = (function(){
             if(!p){return;}
             IF.contextCard = p;
             DO.contextCard = p;
-            var template = GE.card.getTemplate(p.name);            
-            _.each(template.abilities, function (a) {
+            var abilities = GE.permanent.getAbilities(p);            
+            _.each(abilities, function (a) {
                 if(a.trigger === trigger){
                     var condition = eval(a.condition);
                     if(condition === true){

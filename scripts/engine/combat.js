@@ -65,7 +65,6 @@ var GE = (function (mod) {
         }
         console.log('BASTON', attacker, defender);
         mod.combat.tempData = {'attacker': attacker, 'defender': defender};
-        console.log(attacker.hasAttacked);
 
         if(isAttackValid(attacker, defender)){    
             LISTENERS.on('DeclareAttack', {

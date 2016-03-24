@@ -30,17 +30,22 @@ var UI = (function (mod) {
 
         var abilities = abilitiesBlock.selectAll('.ability')
             .data(function (d, i) {
-                var template = GE.card.getTemplate(d.name);
-                var text = template.text ? template.text.split('|') : null;
-                return text || template.abilities || [];
+                var abilities = GE.permanent.getAbilities(d);
+                var text = abilities.reduce(function (previous, current) {
+                    return previous + current.text + '<br>';
+                }, '');
+                var keywords = GE.permanent.getKeywords(d);
+                _.each(keywords, function (value, key) {
+                    text += '<i>' + key + '</i><br>';
+                });
+                return [text];
             })
               .enter()
             .append('xhtml:div')
             .append('div')
               .classed('ability', true)
-              .text(function (d) {
-                var text = d.trigger ? d.trigger + ' ' + d.condition + ' ' + d.effect : d;
-                return text;
+              .html(function (d) {
+                return d;
               });
 
         var stats = selection.append('g')

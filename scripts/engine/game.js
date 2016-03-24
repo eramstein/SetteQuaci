@@ -53,6 +53,7 @@ var GE = (function (mod) {
 
             //clear temporary state
             MUTATORS.clearPermanentsTemporaryAttrs(GE.player.playerNum());
+            GE.permanent.clearModifiersEndTurn();
 
             MUTATORS.setCurrentPlayer(GE.player.opponentNum());
 

@@ -16,6 +16,14 @@ var IF = {
 
     isDefender: function () {
         return IF.contextCard.id === GE.combat.tempData.defender.id;
+    },
+
+    isAttacker: function () {
+        return IF.contextCard.id === GE.combat.tempData.attacker.id;
+    },
+
+    isMover: function () {
+        return IF.contextCard.id === GE.permanent.tempData.mover.id;
     }
 
 };

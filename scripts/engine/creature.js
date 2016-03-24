@@ -3,6 +3,8 @@ var GE = (function (mod) {
     mod.creature = {};
 
     mod.creature.receiveDamage = function (creature, damageDealt) {
+        if(damageDealt <= 0){return;}
+
         var damageCurrent = creature.damage || 0;
 
         MUTATORS.setPermanentProperty(creature.id, 'damage', (damageCurrent + damageDealt));
@@ -15,23 +17,43 @@ var GE = (function (mod) {
         }
     };
 
+    mod.creature.addModifier = function (creature, modifier) {
+        MUTATORS.addModifier(creature.id, {
+                    'type': modifier.type,
+                    'value': modifier.value,
+                    'until': modifier.until
+        });
+    };    
+
     mod.creature.getStrength = function (creature) {
         var template = GE.card.getTemplate(creature.name);
         if(template.type !== 'creature'){return null;}
-        return template.stats.str;
+        var modifier = 0;
+        if(creature.modifiers && creature.modifiers.constructor === Array){
+            modifier = creature.modifiers.reduce(function (previous, current) {
+                var val = current.type === 'str' ? current.value : 0;
+                return previous + val;
+            }, 0);
+        }
+        return template.stats.str + modifier;
     };
 
     mod.creature.getHp = function (creature) {
         var template = GE.card.getTemplate(creature.name);
         if(template.type !== 'creature'){return null;}
-        return template.stats.hp;
+        var modifier = 0;
+        if(creature.modifiers && creature.modifiers.constructor === Array){
+            modifier = creature.modifiers.reduce(function (previous, current) {
+                var val = current.type === 'hp' ? current.value : 0;
+                return previous + val;
+            }, 0);
+        }
+        return template.stats.hp + modifier;
     };
 
     mod.creature.getRemainingHp = function (creature) {
-        var template = GE.card.getTemplate(creature.name);
-        if(template.type !== 'creature'){return null;}
         var damage = creature.damage || 0;
-        return template.stats.hp - damage;
+        return mod.creature.getHp(creature) - damage;
     };
 
     return mod;

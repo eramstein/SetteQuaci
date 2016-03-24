@@ -10,30 +10,39 @@ var CARDS = [
             'hp': 3,
             'str': 1
         },
-        'abilities': [AB.armor(1)],
-        'text': 'Armor 1'  
+        'abilities': [AB.armor(1)]
     },
     {
         'name': 'Zombie',
         'type': 'creature',
         'cost': 1,
         'stats': {
-            'hp': 2,
-            'str': 2
+            'hp': 3,
+            'str': 1
         }
     },
     {
-        'name': 'Ghoul',
+        'name': 'Blacksmith',
         'type': 'creature',
         'cost': 1,
         'stats': {
             'hp': 3,
             'str': 1
         },
-        'keywords': {
-            'piercing': true
-        },
-        'text': 'Piercing'  
+        'abilities': [{
+            'trigger': 'PermanentMoved',
+            'condition': 'IF.isMover()',
+            effect: function (params) {
+                DO.modifyCreatures({
+                    'target': 'adjacent',
+                    'filter': 'allies',
+                    'type': 'str',
+                    'value': 1,
+                    'until': 'EOT'
+                });
+            },
+            'text': 'After blacksmith moves, +1 STR to all adjacent friendly units until EOT'
+        }]  
     },
     {
         'name': 'Wolf',
@@ -42,6 +51,9 @@ var CARDS = [
         'stats': {
             'hp': 2,
             'str': 2
+        },
+        'keywords': {
+            'piercing': true
         }
     },
     {
@@ -66,9 +78,9 @@ var CARDS = [
             effect: function (params) {
                 DO.damageAdjacent(3);
                 DO.selfDestruct();
-            }
-        }],
-        'text': 'EOOT, deal 3 damage to adjacent creatures'                
+            },
+            'text': 'EOOT, deal 3 damage to adjacent creatures'
+        }]                
     },
 
     /******** 2 CC creatures *********/
@@ -91,17 +103,31 @@ var CARDS = [
             'hp': 5,
             'str': 2
         },
-        'abilities': [AB.armor(2)],
-        'text': 'Armor 2'  
+        'abilities': [AB.armor(2)]
     },
     {
-        'name': 'Vampire',
+        'name': 'Armorer',
         'type': 'creature',
         'cost': 2,
         'stats': {
-            'hp': 3,
+            'hp': 6,
             'str': 1
-        }
+        },
+        'abilities': [{
+            'trigger': 'PermanentMoved',
+            'condition': 'IF.isMover()',
+            effect: function (params) {
+                DO.modifyCreatures({
+                    'target': 'adjacent',
+                    'filter': 'allies',
+                    'type': 'ability',
+                    'value': 'AB.armor(1)',
+                    'text': 'Armor 1',
+                    'until': ''
+                });
+            },
+            'text': 'After armorer moves, give Armor 1 to all adjacent friendly units' 
+        }] 
     },
     {
         'name': 'Barbarian',
@@ -116,9 +142,9 @@ var CARDS = [
             'condition': 'true',
             effect: function (params) {
                 DO.damageAdjacent(1);
-            }
-        }],
-        'text': 'EOT, deal 1 damage to adjacent creatures'        
+            },
+            'text': 'EOT, deal 1 damage to adjacent creatures'
+        }]        
     },
     {
         'name': 'Giant Spider',

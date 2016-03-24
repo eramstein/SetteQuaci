@@ -5,10 +5,12 @@ var AB = {
             'trigger': 'BeforeDealCombatDamage',
             'condition': 'IF.isDefender()',
             effect: function (params) {
-                if(params.defender.keywords && params.defender.keywords.piercing === true){return;}
-
-                GE.combat.tempData.damageAbsorbed = armorVal;
-            }
+                var attackerKeywords = GE.permanent.getKeywords(params.attacker);
+                if(attackerKeywords.piercing === true){return;}
+                GE.combat.tempData.damageAbsorbed = GE.combat.tempData.damageAbsorbed || 0;
+                GE.combat.tempData.damageAbsorbed += armorVal;
+            },
+            'text': 'Armor ' + armorVal
         };
     }
 

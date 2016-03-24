@@ -172,6 +172,15 @@ var MUTATORS = (function(){
         }        
     };
 
+    mod.addModifier = function (creatureId, modifier) {
+        if(!STATE.permanents[creatureId].modifiers){
+            STATE.permanents[creatureId].modifiers = [];
+        }
+        STATE.permanents[creatureId].modifiers.push(modifier);
+        var modifiers = STATE.permanents[creatureId].modifiers;
+        sync('permanents/' + creatureId + '/modifiers', modifiers);        
+    };
+
     mod.setPlayerProperty = function (player, propertyName, value) { 
         STATE.players[player][propertyName] = value;
         sync('players/' + player + '/' + propertyName, value);        

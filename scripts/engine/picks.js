@@ -8,6 +8,17 @@ var GE = (function (mod) {
         var cost = Math.ceil(Math.random() * 2);
         var options = _.filter(CARDS, {'cost': cost});
 
+        var testSet = [];
+
+        testSet = ['Peasant', 'Blacksmith', 'Zombie', 'Wolf', 
+                   'Bear', 'Knight', 'Armorer', 'Giant Spider'];
+
+        if (testSet.length > 0) {
+            options = options.filter(function (o) {
+                return testSet.indexOf(o.name) >= 0;
+            });
+        }       
+
         for (var i = 0; i < 4; i++) {
             var card = _.sample(options);
             _.pull(options, card);

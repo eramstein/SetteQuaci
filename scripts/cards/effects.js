@@ -9,6 +9,23 @@ var DO = {
         });
     },
 
+    modifyCreatures: function (params) {
+
+        var targets;
+
+        if(params.target === 'adjacent'){
+           targets = GE.permanent.getAdjacentPermanents(DO.contextCard.x, DO.contextCard.y);
+        }
+
+        if(params.filter === 'allies'){
+            console.log('targets', targets); 
+        }
+         
+        _.each(targets, function (target) {
+            GE.creature.addModifier(target, params);
+        });
+    },
+
     selfDestruct: function () {
         GE.permanent.deletePermanent(DO.contextCard);
     }

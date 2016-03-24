@@ -95,14 +95,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "scripts/cards.js",
-			"settings":
-			{
-				"buffer_size": 2318,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -176,23 +168,27 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/ui/card.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/ui/refresh.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/ui/board.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/index.html",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/cards/abilities.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/cards/cards.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/engine/combat.js",
 		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/state/listeners.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/cards/conditions.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/ui/picks.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/cards.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/abilities.js",
 		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/engine/trap.js",
 		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/engine/permanent.js",
 		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/engine/creature.js",
-		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/engine/combat.js",
 		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/engine/game.js",
-		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/cards.js",
 		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/conditions.js",
-		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/abilities.js",
-		"/C/Users/Etienne/Desktop/SetteQuaci/index.html",
-		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/ui/picks.js",
 		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/engine/card.js",
 		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/state/mutators.js",
-		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/ui/card.js",
 		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/engine/picks.js",
 		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/ui/ui-state.js",
-		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/ui/board.js",
 		"/C/Users/Etienne/Desktop/SetteQuaci/styles/cards.css",
 		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/engine/player.js",
 		"/C/Users/Etienne/Desktop/SetteQuaci/styles/picks.css",
@@ -213,7 +209,6 @@
 		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/data.js",
 		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/board.js",
 		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/lobby/authentication.js",
-		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/ui/refresh.js",
 		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/robots.js",
 		"/C/Users/Etienne/Desktop/TheGame/app/styles/main.css",
 		"/C/Users/Etienne/Desktop/TheGame/app/scripts/gameState.js",
@@ -300,10 +295,7 @@
 		"/C/Users/Etienne/Desktop/TheGame/app/scripts/gameState.json",
 		"/C/Users/Etienne/Desktop/test.html",
 		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/main.js",
-		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/svg.js",
-		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/unit.js",
-		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/ui.js",
-		"/C/Users/Etienne/Desktop/TheGame/.jshintrc"
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/svg.js"
 	],
 	"find":
 	{
@@ -311,7 +303,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 96.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"C:\\Users\\Etienne\\Desktop\\SetteQuaci\\scripts",
@@ -330,6 +322,7 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"tempData",
 			"LISTENERS",
 			"onEndTurn",
 			"allPicks",
@@ -456,8 +449,7 @@
 			"games",
 			"join",
 			"createGame",
-			"game",
-			"games"
+			"game"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -510,37 +502,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "scripts/cards.js",
-					"settings":
-					{
-						"buffer_size": 2318,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1823,
-								1823
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
