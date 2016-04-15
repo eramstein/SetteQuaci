@@ -66,6 +66,7 @@ var GE = (function (mod) {
         if(template.type === 'creature' && 
            !card.hasMoved &&
            !card.hasAttacked &&
+           !(template.keywords && template.keywords.rooted) &&
            card.turnPlayedOn !== STATE.turn &&
            (GE.player.playerNum() === 'player1' && x <= 2 || GE.player.playerNum() === 'player2' && x > 2)){
 

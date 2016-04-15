@@ -12,6 +12,20 @@ var AB = {
             },
             'text': 'Armor ' + armorVal
         };
+    },
+
+    raid: function (raidVal) {
+        return {
+            'trigger': 'BeforeDealCombatDamage',
+            'condition': 'IF.isAttacker()',
+            effect: function (params) {
+                if(params.defender === 'player1' || params.defender === 'player2'){
+                    GE.combat.tempData.addPlayerDamage = GE.combat.tempData.addPlayerDamage || 0;
+                    GE.combat.tempData.addPlayerDamage += raidVal;
+                }
+            },
+            'text': 'Raid ' + raidVal
+        };
     }
 
 };

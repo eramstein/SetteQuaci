@@ -32,6 +32,10 @@ var GE = (function (mod) {
         return (hand === true || !hand) ? [] : hand;
     };
 
+    mod.player.damageOpponent = function (damage) {
+        MUTATORS.setPlayerProperty(mod.player.opponentNum(), 'hp', STATE.players[mod.player.opponentNum()].hp - damage);
+    };
+
     return mod;
 
 }(GE || {}));

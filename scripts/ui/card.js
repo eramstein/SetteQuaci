@@ -30,6 +30,12 @@ var UI = (function (mod) {
 
         var abilities = abilitiesBlock.selectAll('.ability')
             .data(function (d, i) {
+                
+                // differencier les activated abilities
+                // click -> ui-state highlight targets
+                // when target clicked (ou si pas target) -> GE.activations(creature, abilityNum, target) 
+                // -> creature.template.abilities[abilityNum].effect({target: target.})
+
                 var abilities = GE.permanent.getAbilities(d);
                 var text = abilities.reduce(function (previous, current) {
                     return previous + current.text + '<br>';
@@ -39,6 +45,8 @@ var UI = (function (mod) {
                     text += '<i>' + key + '</i><br>';
                 });
                 return [text];
+
+
             })
               .enter()
             .append('xhtml:div')

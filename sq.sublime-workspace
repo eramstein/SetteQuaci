@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"per",
+				"permanents"
+			],
+			[
 				"_c",
 				"_gCurrentPlayer"
 			],
@@ -95,6 +99,38 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "scripts/cards/cards.js",
+			"settings":
+			{
+				"buffer_size": 3839,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "scripts/cards/effects.js",
+			"settings":
+			{
+				"buffer_size": 922,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "scripts/ui/card.js",
+			"settings":
+			{
+				"buffer_size": 4399,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "scripts/state/listeners.js",
+			"settings":
+			{
+				"buffer_size": 665,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -168,26 +204,27 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/engine/picks.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/state/listeners.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/cards/cards.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/cards/abilities.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/ui/picks.js",
 		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/ui/card.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/engine/permanent.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/engine/combat.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/engine/creature.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/cards/effects.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/cards/conditions.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/state/mutators.js",
+		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/engine/game.js",
 		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/ui/refresh.js",
 		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/ui/board.js",
 		"/C/Users/Etienne/Desktop/SetteQuaci/index.html",
-		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/cards/abilities.js",
-		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/cards/cards.js",
-		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/engine/combat.js",
-		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/state/listeners.js",
-		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/cards/conditions.js",
-		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/ui/picks.js",
 		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/cards.js",
 		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/abilities.js",
 		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/engine/trap.js",
-		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/engine/permanent.js",
-		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/engine/creature.js",
-		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/engine/game.js",
 		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/conditions.js",
 		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/engine/card.js",
-		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/state/mutators.js",
-		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/engine/picks.js",
 		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/ui/ui-state.js",
 		"/C/Users/Etienne/Desktop/SetteQuaci/styles/cards.css",
 		"/C/Users/Etienne/Desktop/SetteQuaci/scripts/engine/player.js",
@@ -294,8 +331,7 @@
 		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/hints.js",
 		"/C/Users/Etienne/Desktop/TheGame/app/scripts/gameState.json",
 		"/C/Users/Etienne/Desktop/test.html",
-		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/main.js",
-		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/svg.js"
+		"/C/Users/Etienne/Desktop/TheGame/app/scripts/ui/main.js"
 	],
 	"find":
 	{
@@ -322,6 +358,12 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"abilities",
+			"defender",
+			"creature",
+			".abilities",
+			"clearModifiersEndTurn",
+			"IF.contextCard",
 			"tempData",
 			"LISTENERS",
 			"onEndTurn",
@@ -443,13 +485,7 @@
 			"game",
 			"1",
 			"'ingame/' + ",
-			"firebaseRef",
-			"stateRemote",
-			"firebaseRef",
-			"games",
-			"join",
-			"createGame",
-			"game"
+			"firebaseRef"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -502,8 +538,121 @@
 	"groups":
 	[
 		{
+			"selected": 2,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "scripts/cards/cards.js",
+					"settings":
+					{
+						"buffer_size": 3839,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								273,
+								276
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "scripts/cards/effects.js",
+					"settings":
+					{
+						"buffer_size": 922,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								287,
+								287
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "scripts/ui/card.js",
+					"settings":
+					{
+						"buffer_size": 4399,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2167,
+								2167
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 462.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "scripts/state/listeners.js",
+					"settings":
+					{
+						"buffer_size": 665,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],

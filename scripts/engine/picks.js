@@ -1,17 +1,24 @@
 var GE = (function (mod) {
 
+    var currentCost = 0;
+    function getCurrentCost() {
+        var costLimit = 3;
+        currentCost++;
+        return currentCost % costLimit || costLimit;
+    }
+
     mod.picks = {};
 
     mod.picks.buildPicks = function () {
 
         var picks = [];
-        var cost = Math.ceil(Math.random() * 2);
+        var cost = getCurrentCost();
         var options = _.filter(CARDS, {'cost': cost});
 
         var testSet = [];
 
-        testSet = ['Peasant', 'Blacksmith', 'Zombie', 'Wolf', 
-                   'Bear', 'Knight', 'Armorer', 'Giant Spider'];
+        // testSet = ['Tim', 'Blacksmith', 'Zombie', 'Wolf', 
+        //            'Bear', 'Knight', 'Armorer', 'Giant Spider'];
 
         if (testSet.length > 0) {
             options = options.filter(function (o) {

@@ -17,6 +17,16 @@ var GE = (function (mod) {
         }
     };
 
+    mod.creature.removeDamage = function (creature, damageRemoved) {
+        if(damageRemoved <= 0 || !creature.damage){return;}
+
+        MUTATORS.setPermanentProperty(creature.id, 'damage', Math.max((creature.damage - damageRemoved), 0));
+        LISTENERS.on('DealRemoved', {
+            'creature': creature, 'damageRemoved': damageRemoved
+        });
+
+    };
+
     mod.creature.addModifier = function (creature, modifier) {
         MUTATORS.addModifier(creature.id, {
                     'type': modifier.type,

@@ -10,7 +10,7 @@ var LISTENERS = (function(){
             var abilities = GE.permanent.getAbilities(p);            
             _.each(abilities, function (a) {
                 if(a.trigger === trigger){
-                    var condition = eval(a.condition);
+                    var condition = a.condition ? eval(a.condition) : true;
                     if(condition === true){
                         a.effect(params);
                     }

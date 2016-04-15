@@ -10,8 +10,16 @@ var IF = {
         return IF.contextCard.turnPlayedOn + difference === STATE.turn;
     },
 
-    opponentTurn: function (difference) {
+    startingFromTurn: function (difference) {
+        return IF.contextCard.turnPlayedOn + difference <= STATE.turn;
+    },
+
+    opponentTurn: function () {
         return IF.contextCard.owner !== GE.player.playerNum();
+    },
+
+    playerTurn: function () {
+        return IF.contextCard.owner === GE.player.playerNum();
     },
 
     isDefender: function () {
@@ -24,6 +32,10 @@ var IF = {
 
     isMover: function () {
         return IF.contextCard.id === GE.permanent.tempData.mover.id;
+    },    
+
+    isDefused: function (params) {
+        return IF.contextCard.id === params.trap.id;
     }
 
 };

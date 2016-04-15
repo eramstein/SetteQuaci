@@ -21,7 +21,11 @@ var GE = (function (mod) {
             GE.creature.receiveDamage(defender, damageDealt);          
         }
         else {
-            MUTATORS.setPlayerProperty(defender, 'hp', STATE.players[defender].hp - 1);
+            var playerDamage = 1;
+            if(mod.combat.tempData.addPlayerDamage){
+                playerDamage += mod.combat.tempData.addPlayerDamage;
+            }
+            MUTATORS.setPlayerProperty(defender, 'hp', STATE.players[defender].hp - playerDamage);
         }        
 
     };
@@ -43,8 +47,9 @@ var GE = (function (mod) {
             //same row?
             if(attacker.y !== defender.y) { return false; }
             //blocker?
-            if( (defender.x === 1 && GE.permanent.getPermanents({'x': 2, 'y': attacker.y}).length > 0) ||
-                (defender.x === 4 && GE.permanent.getPermanents({'x': 3, 'y': attacker.y}).length > 0)
+            if( ((defender.x === 1 && GE.permanent.getPermanents({'x': 2, 'y': attacker.y}).length > 0) ||
+                (defender.x === 4 && GE.permanent.getPermanents({'x': 3, 'y': attacker.y}).length > 0))
+                && !GE.permanent.getKeywords(attacker).shooter
               ) { return false; }
         } else {
             //player attack case
